@@ -30,7 +30,7 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Option 2
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="form">1-1</a></li>
+          <li><a href="customer/list">1-1</a></li>
           <li><a href="#">1-2</a></li>
           <li><a href="#">1-3</a></li>
         </ul>
