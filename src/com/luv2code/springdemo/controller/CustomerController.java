@@ -9,23 +9,43 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.luv2code.springdemo.DAO.CustomerDAO;
 import com.luv2code.springdemo.entity.Customer;
+import com.luv2code.springdemo.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
 	
 	@Autowired
-	private CustomerDAO customerDAO;
+	private CustomerService customerService;
 	
 	
 	@RequestMapping("/list")
 	public String processForm(Model theModel){
 		
-		List<Customer> customerList = customerDAO.getCustomer();
+		List<Customer> customerList = customerService.getCustomer();
 		
 		theModel.addAttribute("customers",customerList);
 		
 		return "list-customers";
+	}
+	
+	@RequestMapping("/customerAddForm")
+	public String addCustomer(Model theModel){
+		
+		Customer thecustomer = new Customer();
+		
+		theModel.addAttribute("customer", thecustomer);
+		
+		
+		return "customerForm";
+	}
+	
+	@RequestMapping("/saveCustomer")
+	public String saveCustomer(@ModelAttribute("customer") Customer theCustomer ){
+		
+		customerService.saveCustomer(theCustomer);
+		
+		return "redirect:/customer/list";
 	}
 
 
