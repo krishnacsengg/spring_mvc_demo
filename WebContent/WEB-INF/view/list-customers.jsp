@@ -34,7 +34,7 @@
     border: 2px solid black;">
 				<tr>
 					<th>First Name</th>
-					<th>Last Name</th>
+					<th>Last Name</th> 
 					<th>Email</th>
 					<th></th>
 				</tr>
@@ -42,13 +42,15 @@
 				<!-- loop over and print our customers -->
 
 				<c:forEach var="tempCustomer" items="${customers}">
-				
+				<c:url var="deleteLink" value="/customer/delete">
+						<c:param name="customerId" value="${tempCustomer.id}" />
+					</c:url>
 					<tr>
 						<td> ${tempCustomer.firstName} </td>
 						<td> ${tempCustomer.lastName} </td>
 						<td> ${tempCustomer.email} </td>
 						<td><input type="button" value="Delete"
-				   onclick="window.location.href='customerAddForm'; return false;"
+				   onclick="window.location.href='${deleteLink}'; return false;"
 				   class="btn btn-primary"
 			/></td>
 					</tr>
