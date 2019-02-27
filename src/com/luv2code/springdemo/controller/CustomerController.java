@@ -58,6 +58,16 @@ public class CustomerController {
 		
 		return "redirect:/customer/list";
 	}
+	
+	@RequestMapping("/update")
+	public String updateCustomer(@RequestParam("customerId") int customerID, Model theModel){
+		
+		Customer theCustomer = customerService.getCustomerDetails(customerID);
+		
+		theModel.addAttribute("customer", theCustomer);
+		
+		return "customerForm";
+	}
 
 
   

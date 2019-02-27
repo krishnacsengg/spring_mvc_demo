@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Customer Details</title>
@@ -45,14 +46,20 @@
 				<c:url var="deleteLink" value="/customer/delete">
 						<c:param name="customerId" value="${tempCustomer.id}" />
 					</c:url>
+					<c:url var="update" value="/customer/update">
+					<c:param name="customerId" value = "${tempCustomer.id}"/>
+					</c:url>
 					<tr>
 						<td> ${tempCustomer.firstName} </td>
 						<td> ${tempCustomer.lastName} </td>
 						<td> ${tempCustomer.email} </td>
-						<td><input type="button" value="Delete"
+						<td><input type="button" value="update"
+				   onclick="window.location.href='${update}'; return false;"
+				   class="btn btn-primary"/> ||  
+				   <input type="button" value="Delete"
 				   onclick="window.location.href='${deleteLink}'; return false;"
-				   class="btn btn-primary"
-			/></td>
+				   class="btn btn-danger"/>
+			</td>
 					</tr>
 				
 				</c:forEach>

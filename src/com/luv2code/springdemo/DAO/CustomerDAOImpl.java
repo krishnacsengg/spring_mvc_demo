@@ -39,8 +39,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 		//
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		// save the customer ... finally LOL
-		currentSession.save(theCustomer);
+		
+		currentSession.saveOrUpdate(theCustomer);
 		
 	}
 
@@ -55,6 +55,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 		theQuery.setParameter("customerId", customerID);
 		
 		theQuery.executeUpdate();		
+	}
+
+	@Override
+	public Customer getCustomerDetails(int customerID) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Customer theCustomer = currentSession.get(Customer.class, customerID);
+		
+		return theCustomer;
 	}
 		
 	
